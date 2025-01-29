@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="icon" href="images/browser.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="overflow-hidden bg-no-repeat bg-slate-200 text-black font-roboto scrollbar-thin">
+    <!-- Navbar -->
+    <nav class="flex justify-between bg-white drop-shadow-lg p-3 items-center">
+        <div>
+            <ul class="flex flex-row items-center space-x-2 ">
+
+                <!--Menu Icon-->
+                <button>
+                    <box-icon onclick="onMenu()" name='menu'  class="size-8 hidden lg:block "></box-icon>    
+                </button>
+                <button>
+                    <box-icon onclick="togglePhoneSidebar()" name="menu" class=" size-8 lg:hidden items-start "></box-icon> 
+                </button> 
+
+                <!--Logo-->
+                <li> <img src="images/gwa.jpg" alt="logo" class="h-9 w-auto">
+                </li>
+                <li class="hidden lg:block md:block font-light text-xl select-none">
+                    HR Learning And Performance Management System
+                </li>
+            </ul>
+        </div>
+
+            <!--Notification and Profile Icon-->
+        <div class="flex items-center space-x-3 mr-2 relative ml-auto">
+            <button type="button" id="notificationToggle" class="relative p-1 text-gray-700 hover:text-gray-500 ">
+                <span class="absolute -inset-1.5"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                </svg>
+            </button>
+
+            <div id="notificationMenu" class="absolute right-20 shadow-lg bg-white mt-[280px] py-4  w-[330px] rounded-lg max-h-[300px] overflow-auto hidden">
+                <div class="flex items-center justify-between px-4 mb-4">
+                  <p class="text-xs text-blue-600 cursor-pointer">Clear all</p>
+                  <p class="text-xs text-blue-600 cursor-pointer">Mark as read</p>
+                </div>
+          
+                <ul class="divide-y">
+      
+                  <li class="p-4 flex items-center hover:bg-gray-50 cursor-pointer">
+                    <img src="https://readymadeui.com/team-3.webp" class="w-12 h-12 rounded-full shrink-0" />
+          
+                      <div class="ml-6">
+                        <h3 class="text-sm text-[#333] font-semibold">Your have a new message from San</h3>
+                        <p class="text-xs text-gray-500 mt-2">Hello there, check this new items in from the your may interested from
+                          the motion school.
+                        </p>
+                        <p class="text-xs text-blue-600 leading-3 mt-2">1 day ago</p>
+                      </div>
+                  </li>
+                </ul>
+                <p class="text-xs px-4 mt-6 mb-4 inline-block text-blue-600 cursor-pointer">View all Notifications</p>
+            </div>
+            <!--Profile Dropdown-->
+            <div class="relative ml-3">
+                <div>
+                    <button type="button" id ="profileDropdownButton" onclick="toggleProfileDropdown()" class="relative mr-5 flex rounded-full bg-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-yellow-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                        <span class="absolute -inset-1.5"></span>
+                        <span class="sr-only">User</span>
+                        <img src="images/icon.jpg" alt="profile" class="size-9 rounded-full">
+                    </button>
+                </div>
+
+                <div id="profileDropdownMenu" class="absolute top-12 right-0 w-39 bg-white shadow-lg rounded-md px-4 py-3 space-y-2 z-50 flex-col items-center mr-5 hidden">
+                    <ul class="space-y-2">
+                        <li><a class="flex items-center gap-2 text-gray-500 cursor-pointer hover:text-gray-700 transition-colors" href="#">Profile<box-icon name="user" class="w-5 h-5"></box-icon></a></li>
+                        <li><a class="flex items-center gap-2 text-gray-500 cursor-pointer hover:text-gray-700 transition-colors" href="logout.html">Logout<box-icon name="log-out" class="w-5 h-5"></box-icon></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="relative flex">
+        <!-- PC Sidebar -->
+        <aside class="transition-all duration-500 absolute lg:static w-[285px] hidden lg:block mt-[2px]" id="sidebar">
+            <div id="sidebar" class=" bg-[#FFFFFF] h-screen overflow-y-auto scrollbar-hidden">
+                <div class="flex items-center justify-center h-14 border-b ">
+                    <div class="text-amber-500 text-xl font-bold">HUMAN RESOURCE 2</div>
+                </div>
+                <ul id="sidebar" class="flex flex-col py-4">
+                    <li>
+                      <a href="dboard.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon type='solid' name='dashboard'></box-icon></span>
+                        <span class="text-sm font-medium">Dashboard</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="schedule.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon type='solid' name='calendar'></box-icon></span>
+                        <span class="text-sm font-medium">Training Schedule</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="assessment.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon name='clipboard'></box-icon></span>
+                        <span class="text-sm font-medium">Training Assessment</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="attendance.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon type='solid' name='calendar-check'></box-icon></span>
+                        <span class="text-sm font-medium">Attendance Statistics</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="statistics.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon name='line-chart'></box-icon></span>
+                        <span class="text-sm font-medium">Performance Statistics</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="evaluation.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon type='solid' name='notepad'></box-icon></span>
+                        <span class="text-sm font-medium">Performance Evaluation</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="status.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                        <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon type='solid' name='user-check'></box-icon></span>
+                        <span class="text-sm font-medium">Employee Trainee Status</span>
+                      </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!-- Mobile Sidebar -->
+        <aside class="transition-all duration-500 absolute lg:static mt-[2px] w-[237px] z-10 lg:hidden block" id="phonebar">
+          <div id="phonebar" class=" bg-[#FFFFFF] h-screen overflow-y-auto scrollbar-hidden">
+            <div class="flex items-center justify-center h-14 border-b ">
+                <div class="text-amber-500 text-xl font-bold uppercase">Human Resource 2</div>
+            </div>
+            <ul id="sidebar" class="flex flex-col py-4">
+                <li>
+                  <a href="dboard.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon type='solid' name='dashboard'></box-icon></span>
+                    <span class="text-sm font-medium">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="schedule.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon type='solid' name='calendar'></box-icon></span>
+                    <span class="text-sm font-medium">Training Schedule</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="assessment.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon name='clipboard'></box-icon></span>
+                    <span class="text-sm font-medium">Training Assessment</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="attendance.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon type='solid' name='calendar-check'></box-icon></span>
+                    <span class="text-sm font-medium">Attendance Statistics</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="statistics.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon name='line-chart'></box-icon></span>
+                    <span class="text-sm font-medium">Performance Statistics</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="evaluation.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon type='solid' name='notepad'></box-icon></span>
+                    <span class="text-sm font-medium">Performance Evaluation</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="status.html" class="rounded-l-lg flex flex-row items-center h-12 transform hover:bg-yellow-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                    <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon type='solid' name='user-check'></box-icon></span>
+                    <span class="text-sm font-medium">Employee Trainee Status</span>
+                  </a>
+                </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+    <main class="overflow-auto h-screen flex m-2 bg-yellow-700">
+      <div class="w-4/5 text-white p-6 overflow-auto">
+        <h1 class="text-3xl font-bold">Employee Monitoring</h1>
+        <div class="flex gap-4 mt-4">
+            <div class="bg-blue-600 p-6 rounded-lg w-1/4">
+                <span class="font-bold">Total Employees</span>
+                <span class="font-bold text-green-400 ml-2">↗ 10.0%</span>
+                <h1 class="text-2xl">856</h1>
+                <p>Employee</p>
+            </div>
+            <div class="bg-blue-600 p-6 rounded-lg w-1/4">
+                <span class="font-bold">Job View</span>
+                <span class="font-bold text-green-400 ml-2">↗ 22.0%</span>
+                <h1 class="text-2xl">3,342</h1>
+                <p>Viewers</p>
+            </div>
+            <div class="bg-blue-600 p-6 rounded-lg w-1/4">
+                <span class="font-bold">Job Applied</span>
+                <span class="font-bold text-green-400 ml-2">↗ 12.0%</span>
+                <h1 class="text-2xl">77</h1>
+                <p>Applicants</p>
+            </div>
+            <div class="bg-blue-600 p-6 rounded-lg w-1/4">
+                <span class="font-bold">Resigned Employees</span>
+                <span class="font-bold text-red-400 ml-2">↘ 7.0%</span>
+                <h1 class="text-2xl">17</h1>
+                <p>Employee</p>
+            </div>
+        </div>
+        <br>
+        <div class="flex gap-4">
+            <div class="w-3/5 bg-blue-600 p-6 rounded-lg">
+                <div class="flex justify-between">
+                    <h2 class="text-xl">Job Statistics</h2>
+                    <select class="p-2 bg-gray-700 text-white rounded-md">
+                        <option>This Month</option>
+                    </select>
+                </div>
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="w-2/5 bg-blue-600 p-6 rounded-lg">
+                <h2 class="text-xl">Attendance</h2>
+                <center>
+                    <canvas id="myDoughnutChart"></canvas>
+                </center>
+            </div>
+        </div>
+        <br>
+        <div class="flex gap-4">
+            <div class="w-3/5 bg-blue-600 p-6 rounded-lg">
+                <div class="flex justify-between">
+                    <h2 class="text-xl">Employee Status</h2>
+                    <h5>View All(15)</h5>
+                </div>
+                <table class="w-full mt-4 border-collapse border border-gray-400">
+                    <tr class="border border-gray-400">
+                        <th class="p-2">Employee Name</th>
+                        <th class="p-2">Department</th>
+                        <th class="p-2">Age</th>
+                        <th class="p-2">Status</th>
+                        <th class="p-2">Type</th>
+                    </tr>
+                    <tr class="border border-gray-400">
+                        <td class="flex items-center p-2"><img src="img/ali.png" class="h-10 mr-2">Ali Mujeed</td>
+                        <td class="p-2">Marketing</td>
+                        <td class="p-2">23</td>
+                        <td class="p-2">Active</td>
+                        <td class="p-2"><span class="bg-gray-500 p-2 rounded">Permanent</span></td>
+                    </tr>
+                    <tr class="border border-gray-400">
+                        <td class="flex items-center p-2"><img src="img/mark.png" class="h-10 mr-2">Mark Leo</td>
+                        <td class="p-2">UI/UX</td>
+                        <td class="p-2">23</td>
+                        <td class="p-2">Active</td>
+                        <td class="p-2"><span class="bg-gray-500 p-2 rounded">Permanent</span></td>
+                    </tr>
+                    <tr class="border border-gray-400">
+                        <td class="flex items-center p-2"><img src="img/justin.png" class="h-10 mr-2">Justin Agnes</td>
+                        <td class="p-2">Finance</td>
+                        <td class="p-2">23</td>
+                        <td class="p-2">Active</td>
+                        <td class="p-2"><span class="bg-gray-500 p-2 rounded">Permanent</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w-2/5 bg-blue-600 p-6 rounded-lg">
+                <h3 class="text-center text-xl">Employee Survey Dashboard</h3>
+                <p>Juan - Performance: 80%</p>
+                <div class="bg-gray-500 rounded h-6 w-full">
+                    <div class="bg-blue-300 h-6 rounded" style="width: 80%;"></div>
+                </div>
+                <p>Jacob - Performance: 60%</p>
+                <div class="bg-gray-500 rounded h-6 w-full">
+                    <div class="bg-blue-500 h-6 rounded" style="width: 60%;"></div>
+                </div>
+                <p>Pedro - Performance: 45%</p>
+                <div class="bg-gray-500 rounded h-6 w-full">
+                    <div class="bg-red-500 h-6 rounded" style="width: 45%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+  
+</body>
+<script src="script.js"></script>
+</html>

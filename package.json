@@ -1,0 +1,9 @@
+{
+
+  "scripts": {
+     "dev": "tailwindcss -i ./src/main.css -o ./src/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
