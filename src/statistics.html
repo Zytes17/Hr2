@@ -1,11 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/browser.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Tooltip styles */
+        .tooltip-container {
+            position: relative;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            margin-left: 10px;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        /* Show tooltip only when sidebar is collapsed */
+        .w-16 .tooltip-container:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Arrow for tooltip */
+        .tooltip::before {
+            content: "";
+            position: absolute;
+            left: -4px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent rgb(251, 255, 0) transparent transparent;
+        }
+    </style>
 </head>
-<body>
-   
+
+<body class="bg-slate-200 font-Roboto flex">
+    
+    <nav class="bg-white drop-shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-full mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <button id="toggle-btn" onclick="toggleSidebar()" class="text-gray-600  hover:text-gray-900">
+                        <i class="fas fa-bars text-2xl"></i> 
+                    </button>
+                    <img src="images/gwa.jpg" alt="logo" class="size-9 ml-4">
+                    <span class="ml-1 text-xl font-semibold">Great Wall Arts</span>
+                </div>
+                <div class="flex items-center space-x-4">
+
+                    <!-- Notification Bell -->
+                    <div class="relative">
+                        <button id="notification-toggle" class="p-2 text-gray-600 hover:text-gray-900 rounded-full hover:bg-gray-100">
+                            <i class="fas fa-bell text-xl"></i>
+                        </button>
+                        <!-- Notification Dropdown -->
+                        <div id="notification-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg py-2 z-50">
+                            <h3 class="px-4 py-2 text-sm font-semibold text-gray-700 border-b">Notifications</h3>
+                            <div class="max-h-64 overflow-y-auto">
+                                Dito ilalagay yung mga notifs
+                            </div>
+                            <a href="#" class="block text-center px-4 py-2 text-sm text-blue-600 hover:text-blue-700 font-medium border-t">
+                                View all notifications
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Profile -->
+                    <div class="relative">
+                        <button id="profile-toggle" class=" rounded-full ring-2 mr-5 ring-gray-200 hover:ring-amber-300 focus:outline-none">
+                            <img class="size-9 rounded-full object-cover" src="images/icon.jpg" alt="Profile">
+                        </button>
+
+                        <!-- Profile Dropdown -->
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user-circle mr-2"></i> Your Profile
+                            </a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-cog mr-2"></i> Settings
+                            </a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-t text-red-600">
+                                <i class="fas fa-sign-out-alt mr-2"></i> Sign out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <aside id="sidebar" class="w-64 bg-white h-screen fixed top-0 left-0 shadow-lg pt-16 transition-all duration-500">
+        <div id="sidebar-title"></div>
+      <ul class="flex flex-col space-y-2">
+        <li class="tooltip-container">
+            <a href="index.html" class="mt-5 ml-5 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-amber-500 hover:text-amber-400">
+                <span class="mr-2 inline-flex items-center justify-center h-13 w-13 text-lg text-gray-400"><box-icon name='dashboard' type='solid' color='orange' ></box-icon></span>
+                <span class="text-2xl font-bold sidebar-text">Dashboard</span>
+            </a>
+            <div class="tooltip">Dashboard</div>
+        </li>
+            <div class="ml-3 text-amber-500 flex-shrink text-lg font-bold sidebar-text">Learning and Development</div>
+        <li class="tooltip-container">
+            <a href="assessment.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon name='clipboard'></box-icon></span>
+                <span class="text-md font-medium sidebar-text">Training Assessment</span>
+            </a>
+            <div class="tooltip">Training Assessment</div>
+        </li>
+            <div class="text-amber-500 flex-shrink text-lg font-bold sidebar-text ml-3">Performance Management</div>
+        <li class="tooltip-container">
+            <a href="attendance.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-users" style="color: #111212;"></i></span>
+                <span class="text-md font-medium sidebar-text">Attendance Statistics</span>
+            </a>
+            <div class="tooltip">Attendance Statistics</div>
+        </li>
+        <li class="tooltip-container">
+            <a href="statistics.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-chart-line" style="color: #111212;"></i></span>
+                <span class="text-md font-medium sidebar-text">Performance Statistics</span>
+            </a>
+            <div class="tooltip">Performance Statistics</div>
+        </li>
+        <li class="tooltip-container">
+            <a href="evaluation.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-star" style="color: #111212;"></i></span>
+                <span class="text-md font-medium sidebar-text">Performance Evaluation</span>
+            </a>
+            <div class="tooltip">Performance Evaluation</div>
+        </li>
+        <li class="tooltip-container">
+            <a href="status.html" class="ml-3 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-user-check" style="color: #111212;"></i></span>
+                <span class="text-md font-medium sidebar-text">Employee Trainee Status</span>
+            </a>
+            <div class="tooltip">Employee Trainee Status</div>
+        </li>
+        <div class="text-amber-500 flex-shrink text-lg font-bold sidebar-text ml-6">Training Management</div>
+        <li class="tooltip-container">
+            <a href="schedule.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-calendar-days" style="color: #111212;"></i></span>
+                <span class="text-md font-medium sidebar-text">Training Schedule</span>
+            </a>
+            <div class="tooltip">Training Schedule</div>
+        </li>
+    </ul>
+  </aside>
+
+  <main id="main-content" class="ml-64 p-5 pt-20 w-auto transition-all duration-500">
+
+            <div class="overflow-auto pb-24">
+                <h1 class="text-3xl text-amber-500 font-bold">Dashboard</h1>
+                
+                    
+            </div>
+            
+  </main>
+  <script>
+
+  </script>
 </body>
-</html>
+<script src="script.js"></script>
+</html> 
