@@ -5,49 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <link rel="icon" href="images/browser.png">
     <link rel="stylesheet" href="styles.css">
+
     <style>
-        /* Tooltip styles */
-        .tooltip-container {
-            position: relative;
-        }
+.tooltip-container {
+  position: relative;
+}
 
-        .tooltip {
-            visibility: hidden;
-            position: absolute;
-            left: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: white;
-            color: black;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            white-space: nowrap;
-            margin-left: 10px;
-            z-index: 100;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-left: 10px;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
 
-        /* Show tooltip only when sidebar is collapsed */
-        .w-16 .tooltip-container:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
+/* Show tooltip only when sidebar is collapsed */
+.w-16 .tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
 
-        /* Arrow for tooltip */
-        .tooltip::before {
-            content: "";
-            position: absolute;
-            left: -4px;
-            top: 50%;
-            transform: translateY(-50%);
-            border-width: 5px;
-            border-style: solid;
-            border-color: transparent rgb(251, 255, 0) transparent transparent;
-        }
+/* Arrow for tooltip */
+.tooltip::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent rgb(251, 255, 0) transparent transparent;
+}
     </style>
 </head>
 
@@ -116,66 +118,208 @@
             </a>
             <div class="tooltip">Dashboard</div>
         </li>
-            <div class="ml-3 text-amber-500 flex-shrink text-lg font-bold sidebar-text">Learning and Development</div>
+             <!-- Learning Management -->
+             <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
+                <i class="fa-solid fa-book-open-reader text-lg ml-1 mr-2 text-amber-500 sidebar-icon"></i>
+                <span class="text-l sidebar-text">Learning & Development</span>
+            </li>
+
+
         <li class="tooltip-container">
             <a href="assessment.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon name='clipboard'></box-icon></span>
-                <span class="text-md font-medium sidebar-text">Training Assessment</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fas fa-file-alt text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Training Workshop</span>
             </a>
-            <div class="tooltip">Training Assessment</div>
+            <div class="tooltip">Training Workshop</div>
         </li>
-            <div class="text-amber-500 flex-shrink text-lg font-bold sidebar-text ml-3">Performance Management</div>
+                <!-- Performance Management -->
+                <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
+                    <i class="fa fa-bar-chart ml-1 mr-2 text-lg text-amber-500 sidebar-icon"></i>
+                    <span class="text-l sidebar-text">Performance Management</span>
+                </li>
+
         <li class="tooltip-container">
             <a href="attendance.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-users" style="color: #111212;"></i></span>
-                <span class="text-md font-medium sidebar-text">Attendance Statistics</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-users text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Attendance Statistics</span>
             </a>
             <div class="tooltip">Attendance Statistics</div>
         </li>
         <li class="tooltip-container">
             <a href="statistics.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-chart-line" style="color: #111212;"></i></span>
-                <span class="text-md font-medium sidebar-text">Performance Statistics</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-chart-line text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Performance Statistics</span>
             </a>
             <div class="tooltip">Performance Statistics</div>
         </li>
         <li class="tooltip-container">
             <a href="evaluation.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-star" style="color: #111212;"></i></span>
-                <span class="text-md font-medium sidebar-text">Performance Evaluation</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-star text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Performance Evaluation</span>
             </a>
             <div class="tooltip">Performance Evaluation</div>
         </li>
         <li class="tooltip-container">
             <a href="status.html" class="ml-3 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-user-check" style="color: #111212;"></i></span>
-                <span class="text-md font-medium sidebar-text">Employee Trainee Status</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-user-check text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Employee Trainee Status</span>
             </a>
             <div class="tooltip">Employee Trainee Status</div>
         </li>
-        <div class="text-amber-500 flex-shrink text-lg font-bold sidebar-text ml-6">Training Management</div>
+        
+         <!-- Training Management -->
+         <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
+            <i class="fas fa-chalkboard-teacher text-lg ml-1 mr-1 text-amber-500 sidebar-icon"></i>
+            <span class="text-l sidebar-text">Training Management</span>
+        </li>
+
         <li class="tooltip-container">
             <a href="schedule.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-calendar-days" style="color: #111212;"></i></span>
-                <span class="text-md font-medium sidebar-text">Training Schedule</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-calendar-days text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Training Schedule</span>
             </a>
             <div class="tooltip">Training Schedule</div>
         </li>
     </ul>
   </aside>
 
-  <main id="main-content" class="ml-64 p-5 pt-20 w-auto transition-all duration-500">
-
-            <div class="overflow-auto pb-24">
-                <h1 class="text-3xl text-amber-500 font-bold">Dashboard</h1>
-                
-                    
+  <main id="main-content" class="ml-64  pt-5 w-full transition-all duration-500">
+    <div class="p-4 mt-10 w-full">
+        <div class="flex flex-col md:flex-row items-center justify-between bg-white shadow-md rounded-lg p-4 mb-4">
+            <div class="flex items-center">
+                <div class="text-xl font-bold">Dashboard</div>
             </div>
-            
+        </div>
+      
+        <div class="grid grid-cols-1 ml-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Total New Hired  -->
+            <div class="bg-white w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-700">Total New Hired</h2>
+                        <div class="flex items-center mt-1">
+                            <span class="text-3xl font-bold">0</span>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-amber-100 rounded-full">
+                        <i class="fas fa-user-plus text-amber-600 text-xl"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600">Trainees</p>
+            </div>
+          
+            <!-- Training -->
+            <div class="bg-white w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-700">Training</h2>
+                        <div class="flex items-center mt-1">
+                            <span class="text-3xl font-bold">0</span>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-blue-100 rounded-full">
+                        <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600">Completed</p>
+            </div>
+          
+            <!-- Total Employee -->
+            <div class="bg-white w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-700">Total Employee</h2>
+                        <div class="flex items-center mt-1">
+                            <span class="text-3xl font-bold">0</span>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-green-100 rounded-full">
+                        <i class="fas fa-users text-green-600 text-xl"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600">Employee list</p>
+            </div>
+          
+            <!-- Employee Evaluated -->
+            <div class="bg-white w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-700">Employee Evaluated</h2>
+                        <div class="flex items-center mt-1">
+                            <span class="text-3xl font-bold">0</span>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-purple-100 rounded-full">
+                        <i class="fas fa-clipboard-check text-purple-600 text-xl"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600">Completed</p>
+            </div>
+        </div>
+      </div>
+      
+      <!-- Job Statistics & Attendance Statistics -->
+      <div class="ml-5 flex gap-4">
+        <div class="w-[65%] bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-900">Job Statistics</h1>
+                <select class="bg-white text-black px-4 py-2 rounded border border-black">
+                    <option value="">This Month</option>
+                </select>
+            </div>
+            <canvas id="myChart" class="mt-4 w-full"></canvas>
+        </div>
+      
+        <div class="w-[32%] bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-bold text-gray-900">Attendance Statistics</h1>
+            <div class="flex justify-center mt-4">
+                    <canvas id="myDoughnutChart"></canvas>
+            </div>
+        </div>
+      </div>
+      
+      
+      <!-- Employee Trainee Status & Top 5 Performer -->
+      <div class="flex gap-4 ml-5 mt-5">
+      <div class="w-[65%] bg-white p-6 rounded-lg shadow-lg">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-gray-900">Employee Trainee Status</h1>
+            <a href="#" class="text-sm text-gray-600 hover:text-gray-900">View All</a>
+        </div>
+      
+        <div class="overflow-x-auto">
+            <table class="min-w-full">
+                <thead>
+                    <tr class="border-b bg-gradient-to-r from-yellow-300 to-amber-400">
+                        <th class="px-6 py-3 text-left">Employee Name</th>
+                        <th class="px-6 py-3 text-left">Department</th>
+                        <th class="px-6 py-3 text-left">Position</th>
+                        <th class="px-6 py-3 text-left">Training/Evaluation</th>
+                        <th class="px-6 py-3 text-left">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="traineeStatus">
+                    <!-- Dito ididisplay yung data-->
+                </tbody>
+            </table>
+        </div>
+      </div>
+      
+      <!-- Top 5 Employee Performer -->
+      <div class="w-[32%] bg-white p-6 rounded-lg shadow-lg">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-gray-900">Top 5 - Employee Performer</h1>
+        </div>
+        <div class="space-y-6" id="top5Container">
+            <!-- Dito ididisplay yung data -->
+        </div>
+      </div>
+      </div>
   </main>
   <script>
-
+    
   </script>
 </body>
 <script src="script.js"></script>
+<script src="chart.js"></script>
 </html> 

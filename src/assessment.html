@@ -5,49 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <link rel="icon" href="images/browser.png">
     <link rel="stylesheet" href="styles.css">
+
     <style>
-        /* Tooltip styles */
-        .tooltip-container {
-            position: relative;
-        }
+.tooltip-container {
+  position: relative;
+}
 
-        .tooltip {
-            visibility: hidden;
-            position: absolute;
-            left: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: white;
-            color: black;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            white-space: nowrap;
-            margin-left: 10px;
-            z-index: 100;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-left: 10px;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
 
-        /* Show tooltip only when sidebar is collapsed */
-        .w-16 .tooltip-container:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
+/* Show tooltip only when sidebar is collapsed */
+.w-16 .tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
 
-        /* Arrow for tooltip */
-        .tooltip::before {
-            content: "";
-            position: absolute;
-            left: -4px;
-            top: 50%;
-            transform: translateY(-50%);
-            border-width: 5px;
-            border-style: solid;
-            border-color: transparent rgb(251, 255, 0) transparent transparent;
-        }
+/* Arrow for tooltip */
+.tooltip::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent rgb(251, 255, 0) transparent transparent;
+}
     </style>
 </head>
 
@@ -116,66 +118,84 @@
             </a>
             <div class="tooltip">Dashboard</div>
         </li>
-            <div class="ml-3 text-amber-500 flex-shrink text-lg font-bold sidebar-text">Learning and Development</div>
+             <!-- Learning Management -->
+             <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
+                <i class="fa-solid fa-book-open-reader text-lg ml-1 mr-2 text-amber-500 sidebar-icon"></i>
+                <span class="text-l sidebar-text">Learning & Development</span>
+            </li>
+
+
         <li class="tooltip-container">
             <a href="assessment.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><box-icon name='clipboard'></box-icon></span>
-                <span class="text-md font-medium sidebar-text">Training Assessment</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fas fa-file-alt text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Training Workshop</span>
             </a>
-            <div class="tooltip">Training Assessment</div>
+            <div class="tooltip">Training Workshop</div>
         </li>
-            <div class="text-amber-500 flex-shrink text-lg font-bold sidebar-text ml-3">Performance Management</div>
+                <!-- Performance Management -->
+                <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
+                    <i class="fa fa-bar-chart ml-1 mr-2 text-lg text-amber-500 sidebar-icon"></i>
+                    <span class="text-l sidebar-text">Performance Management</span>
+                </li>
+
         <li class="tooltip-container">
             <a href="attendance.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-users" style="color: #111212;"></i></span>
-                <span class="text-md font-medium sidebar-text">Attendance Statistics</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-users text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Attendance Statistics</span>
             </a>
             <div class="tooltip">Attendance Statistics</div>
         </li>
         <li class="tooltip-container">
             <a href="statistics.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-chart-line" style="color: #111212;"></i></span>
-                <span class="text-md font-medium sidebar-text">Performance Statistics</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-chart-line text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Performance Statistics</span>
             </a>
             <div class="tooltip">Performance Statistics</div>
         </li>
         <li class="tooltip-container">
             <a href="evaluation.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-star" style="color: #111212;"></i></span>
-                <span class="text-md font-medium sidebar-text">Performance Evaluation</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-star text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Performance Evaluation</span>
             </a>
             <div class="tooltip">Performance Evaluation</div>
         </li>
         <li class="tooltip-container">
             <a href="status.html" class="ml-3 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-user-check" style="color: #111212;"></i></span>
-                <span class="text-md font-medium sidebar-text">Employee Trainee Status</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-user-check text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Employee Trainee Status</span>
             </a>
             <div class="tooltip">Employee Trainee Status</div>
         </li>
-        <div class="text-amber-500 flex-shrink text-lg font-bold sidebar-text ml-6">Training Management</div>
+        
+         <!-- Training Management -->
+         <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
+            <i class="fas fa-chalkboard-teacher text-lg ml-1 mr-1 text-amber-500 sidebar-icon"></i>
+            <span class="text-l sidebar-text">Training Management</span>
+        </li>
+
         <li class="tooltip-container">
             <a href="schedule.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-calendar-days" style="color: #111212;"></i></span>
-                <span class="text-md font-medium sidebar-text">Training Schedule</span>
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-calendar-days text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Training Schedule</span>
             </a>
             <div class="tooltip">Training Schedule</div>
         </li>
     </ul>
   </aside>
 
-  <main id="main-content" class="ml-64 p-5 pt-20 w-auto transition-all duration-500">
-
-            <div class="overflow-auto pb-24">
-                <h1 class="text-3xl text-amber-500 font-bold">Dashboard</h1>
-                
-                    
+  <main id="main-content" class="ml-64  pt-5 w-full transition-all duration-500">
+    <div class="p-4 mt-10 w-full">
+        <div class="flex flex-col md:flex-row items-center justify-between bg-white shadow-md rounded-lg p-4 mb-4">
+            <div class="flex items-center">
+                <div class="text-xl font-bold">Training Workshop</div>
             </div>
-            
+        </div>
+    </div>
   </main>
   <script>
-
+    
   </script>
 </body>
 <script src="script.js"></script>
+<script src="chart.js"></script>
 </html> 
