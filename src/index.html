@@ -108,22 +108,36 @@
         </div>
     </nav>
 
-    <aside id="sidebar" class="w-64 bg-white h-screen fixed top-0 left-0 shadow-lg pt-16 transition-all duration-500">
+    <aside id="sidebar" class="w-64 bg-white h-screen fixed top-0 left-0 shadow-lg pt-16 transition-all duration-500 items-center">
         <div id="sidebar-title"></div>
-      <ul class="flex flex-col space-y-2">
+      <ul class="flex flex-col space-y-4">
         <li class="tooltip-container">
-            <a href="index.html" class="mt-5 ml-5 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-amber-500 hover:text-amber-400">
+            <a href="index.html" class="mt-5 ml-5 rounded-l-lg flex flex-row items-center h-10 transform hover:translate-x-2 transition-transform ease-in duration-200 text-amber-500 hover:text-amber-400">
                 <span class="mr-2 inline-flex items-center justify-center h-13 w-13 text-lg text-gray-400"><box-icon name='dashboard' type='solid' color='orange' ></box-icon></span>
                 <span class="text-2xl font-bold sidebar-text">Dashboard</span>
             </a>
             <div class="tooltip">Dashboard</div>
         </li>
-             <!-- Learning Management -->
-             <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
+            <!-- Learning Management -->
+        <li class="sidebar-item mb-2 font-bold text-amber-500 ml-5 items-center cursor-pointer flex justify-between pr-5" onclick="toggleMenu()">
+            <div class="flex items-center">
                 <i class="fa-solid fa-book-open-reader text-lg ml-1 mr-2 text-amber-500 sidebar-icon"></i>
-                <span class="text-l sidebar-text">Learning & Development</span>
+                <span class="text-l sidebar-text ml-1">Learning and Development</span>
+            </div>
+            <i id="dropdownArrow" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+        </li>
+        <ul id="dropdownMenu" class="hidden bg-amber-200 rounded-md mt-5 space-y-2 pl-6 py-3">
+            <li class="text-gray-700 hover:text-amber-500 flex items-center tooltip-container">
+                <i class="fas fa-user-plus mr-2 text-gray-400 cursor-pointer"></i> 
+                <a href="newhired.html" class="text-gray-700 hover:text-amber-500 sidebar-text">New Hired</a>
+                <div class="tooltip">New Hired</div>
             </li>
-
+            <li class="text-gray-700 hover:text-amber-500 flex items-center tooltip-container">
+                <i class="fas fa-users mr-3 text-gray-400 cursor-pointer"></i> 
+                <a href="regular.html" class="text-gray-700 hover:text-amber-500 sidebar-text">Regular Employees</a>
+                <div class="tooltip">Regular Employees</div>
+            </li>
+        </ul>
 
         <li class="tooltip-container">
             <a href="assessment.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
@@ -133,9 +147,11 @@
             <div class="tooltip">Training Workshop</div>
         </li>
                 <!-- Performance Management -->
-                <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
-                    <i class="fa fa-bar-chart ml-1 mr-2 text-lg text-amber-500 sidebar-icon"></i>
-                    <span class="text-l sidebar-text">Performance Management</span>
+                <li class="sidebar-item mb-2 font-bold text-amber-500 ml-5 items-center flex justify-between pr-5">
+                    <div class="flex items-center">
+                        <i class="fa fa-bar-chart text-lg ml-1 mr-2 text-amber-500 sidebar-icon"></i>
+                        <span class="text-l sidebar-text ml-1">Performance Management</span>
+                    </div>
                 </li>
 
         <li class="tooltip-container">
@@ -146,27 +162,12 @@
             <div class="tooltip">Attendance Statistics</div>
         </li>
         <li class="tooltip-container">
-            <a href="statistics.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-chart-line text-gray-400"></i></span>
-                <span class="text-sm font-medium sidebar-text">Performance Statistics</span>
-            </a>
-            <div class="tooltip">Performance Statistics</div>
-        </li>
-        <li class="tooltip-container">
             <a href="evaluation.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                 <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-star text-gray-400"></i></span>
                 <span class="text-sm font-medium sidebar-text">Performance Evaluation</span>
             </a>
             <div class="tooltip">Performance Evaluation</div>
         </li>
-        <li class="tooltip-container">
-            <a href="status.html" class="ml-3 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-user-check text-gray-400"></i></span>
-                <span class="text-sm font-medium sidebar-text">Employee Trainee Status</span>
-            </a>
-            <div class="tooltip">Employee Trainee Status</div>
-        </li>
-        
          <!-- Training Management -->
          <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
             <i class="fas fa-chalkboard-teacher text-lg ml-1 mr-1 text-amber-500 sidebar-icon"></i>
@@ -174,7 +175,7 @@
         </li>
 
         <li class="tooltip-container">
-            <a href="schedule.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+            <a href="trainee.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                 <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-calendar-days text-gray-400"></i></span>
                 <span class="text-sm font-medium sidebar-text">Training Schedule</span>
             </a>
@@ -221,14 +222,14 @@
                         <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
                     </div>
                 </div>
-                <p class="text-gray-600">Completed</p>
+                <p class="text-gray-600">On Going Trainees</p>
             </div>
           
             <!-- Total Employee -->
             <div class="bg-white w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
                 <div class="flex justify-between items-start mb-4">
                     <div>
-                        <h2 class="text-lg font-semibold text-gray-700">Total Employee</h2>
+                        <h2 class="text-lg font-semibold text-gray-700">Total Employees</h2>
                         <div class="flex items-center mt-1">
                             <span class="text-3xl font-bold">0</span>
                         </div>
@@ -257,67 +258,102 @@
             </div>
         </div>
       </div>
-      
-      <!-- Job Statistics & Attendance Statistics -->
-      <div class="ml-5 flex gap-4">
-        <div class="w-[65%] bg-white p-6 rounded-lg shadow-lg">
-            <div class="flex justify-between items-center">
-                <h1 class="text-2xl font-bold text-gray-900">Job Statistics</h1>
-                <select class="bg-white text-black px-4 py-2 rounded border border-black">
-                    <option value="">This Month</option>
-                </select>
-            </div>
-            <canvas id="myChart" class="mt-4 w-full"></canvas>
+
+<div class='ml-5 grid grid-cols-3 gap-4 mb-10'>
+    <div class='col-span-2 bg-white p-6 rounded-lg shadow-lg h-[460px] flex flex-col'>
+        <div class='flex justify-between items-center'>
+            <h1 class='text-2xl font-bold text-gray-900'>Job Statistics</h1>
         </div>
-      
-        <div class="w-[32%] bg-white p-6 rounded-lg shadow-lg">
-            <h1 class="text-2xl font-bold text-gray-900">Attendance Statistics</h1>
-            <div class="flex justify-center mt-4">
-                    <canvas id="myDoughnutChart"></canvas>
-            </div>
-        </div>
-      </div>
-      
-      
-      <!-- Employee Trainee Status & Top 5 Performer -->
-      <div class="flex gap-4 ml-5 mt-5">
-      <div class="w-[65%] bg-white p-6 rounded-lg shadow-lg">
-        <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-bold text-gray-900">Employee Trainee Status</h1>
-            <a href="#" class="text-sm text-gray-600 hover:text-gray-900">View All</a>
-        </div>
-      
-        <div class="overflow-x-auto">
-            <table class="min-w-full">
-                <thead>
-                    <tr class="border-b bg-gradient-to-r from-yellow-300 to-amber-400">
-                        <th class="px-6 py-3 text-left">Employee Name</th>
-                        <th class="px-6 py-3 text-left">Department</th>
-                        <th class="px-6 py-3 text-left">Position</th>
-                        <th class="px-6 py-3 text-left">Training/Evaluation</th>
-                        <th class="px-6 py-3 text-left">Status</th>
-                    </tr>
-                </thead>
-                <tbody id="traineeStatus">
-                    <!-- Dito ididisplay yung data-->
-                </tbody>
-            </table>
-        </div>
-      </div>
-      
-      <!-- Top 5 Employee Performer -->
-      <div class="w-[32%] bg-white p-6 rounded-lg shadow-lg">
-        <div class="mb-6">
-            <h1 class="text-2xl font-bold text-gray-900">Top 5 - Employee Performer</h1>
-        </div>
-        <div class="space-y-6" id="top5Container">
-            <!-- Dito ididisplay yung data -->
-        </div>
-      </div>
-      </div>
-  </main>
-  <script>
     
+        <div class="flex-grow flex justify-center items-center mt-5">
+            <canvas id="jobStats" class="w-full h-full"></canvas>
+        </div>
+    </div>
+    
+        <!-- Attendance Statistics -->
+    <div class='bg-white p-6 rounded-lg shadow-lg h-[460px] flex flex-col mr-4'>
+        <h1 class='text-2xl font-bold text-gray-900'>Attendance Statistics</h1>
+        
+        <!-- Attendance Counts -->
+        <div class='flex justify-around mt-6'>
+            <div class='text-center'>
+                <h2 class='text-lg font-semibold text-green-600'>Present</h2>
+                <span id='presentCount' class='text-3xl font-bold text-green-600'>0</span>
+            </div>
+            <div class='text-center'>
+                <h2 class='text-lg font-semibold text-red-600'>Absent</h2>
+                <span id='absentCount' class='text-3xl font-bold text-red-600'>0</span>
+            </div>
+            <div class='text-center'>
+                <h2 class='text-lg font-semibold text-yellow-600'>Late</h2>
+                <span id='lateCount' class='text-3xl font-bold text-yellow-600'>0</span>
+            </div>
+        </div>
+    
+            <!-- Attendance Doughnut Chart -->
+            <div class='flex justify-center flex-grow'>
+                <canvas id='attendanceStats' class='max-h-[250px] mt-10'></canvas>
+            </div>
+    </div>
+</div>
+  </main>
+
+
+
+  <script>
+   const jobStatsCtx = document.getElementById('jobStats');
+  new Chart(jobStatsCtx, {
+    type: 'bar',
+    data: {
+      labels: ['New Hired', 'Trainees', 'Total Employees', 'Evaluated'],
+      datasets: [{
+        data: [14, 4, 9, 3],
+        backgroundColor: [
+          '#F59E0B',
+          '#3B82F6',
+          '#10B981',
+          '#8B5CF6'
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const attendanceStatsCtx = document.getElementById('attendanceStats');
+  new Chart(attendanceStatsCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Present', 'Absent', 'Late'],
+      datasets: [{
+        data: [10, 5, 3],
+        backgroundColor: [
+          '#10B981',
+          '#EF4444',
+          '#F59E0B'
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top'
+        }
+      }
+    }
+  });
   </script>
 </body>
 <script src="script.js"></script>

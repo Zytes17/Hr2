@@ -3,9 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link rel="icon" href="images/browser.png">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-left: 10px;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Show tooltip only when sidebar is collapsed */
+.w-16 .tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Arrow for tooltip */
+.tooltip::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent rgb(251, 255, 0) transparent transparent;
+}
+    </style>
 </head>
-<body>
+
+<body class="bg-slate-200 font-Roboto flex">
     
+    <nav class="bg-white drop-shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-full mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <button id="toggle-btn" onclick="toggleSidebar()" class="text-gray-600  hover:text-gray-900">
+                        <i class="fas fa-bars text-2xl"></i> 
+                    </button>
+                    <img src="images/gwa.jpg" alt="logo" class="size-10 ml-4">
+                    <span class="ml-3 text-xl font-semibold">Great Wall Arts</span>
+                </div>
+                <div class="flex items-center space-x-4">
+
+                    <!-- Notification Bell -->
+                    <div class="relative">
+                        <button id="notification-toggle" class="p-2 text-gray-600 hover:text-gray-900 rounded-full hover:bg-gray-100">
+                            <i class="fas fa-bell text-xl"></i>
+                        </button>
+                        <!-- Notification Dropdown -->
+                        <div id="notification-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg py-2 z-50">
+                            <h3 class="px-4 py-2 text-sm font-semibold text-gray-700 border-b">Notifications</h3>
+                            <div class="max-h-64 overflow-y-auto">
+                                Dito ilalagay yung mga notifs
+                            </div>
+                            <a href="#" class="block text-center px-4 py-2 text-sm text-blue-600 hover:text-blue-700 font-medium border-t">
+                                View all notifications
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Profile -->
+                    <div class="relative">
+                        <button id="profile-toggle" class=" rounded-full ring-2 ring-gray-200 hover:ring-amber-300 focus:outline-none">
+                            <img class="size-9 rounded-full object-cover" src="images/icon.jpg" alt="Profile">
+                        </button>
+
+                        <!-- Profile Dropdown -->
+                        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user-circle mr-2"></i> Your Profile
+                            </a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-cog mr-2"></i> Settings
+                            </a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-t text-red-600">
+                                <i class="fas fa-sign-out-alt mr-2"></i> Sign out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <aside id="sidebar" class="w-64 bg-white h-screen fixed top-0 left-0 shadow-lg pt-16 transition-all duration-500 items-center">
+        <div id="sidebar-title"></div>
+      <ul class="flex flex-col space-y-4">
+        <li class="tooltip-container">
+            <a href="index.html" class="mt-5 ml-5 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-amber-500 hover:text-amber-400">
+                <span class="mr-2 inline-flex items-center justify-center h-13 w-13 text-lg text-gray-400"><box-icon name='dashboard' type='solid' color='orange' ></box-icon></span>
+                <span class="text-2xl font-bold sidebar-text">Dashboard</span>
+            </a>
+            <div class="tooltip">Dashboard</div>
+        </li>
+             <!-- Learning Management -->
+             <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5 items-center" onclick="toggleMenu()">
+                <i class="fa-solid fa-book-open-reader text-lg ml-1 mr-2 text-amber-500 sidebar-icon"></i>
+                <span class="text-l sidebar-text">Learning & Development</span> 
+            </li>
+
+
+        <li class="tooltip-container">
+            <a href="assessment.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fas fa-file-alt text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Training Workshop</span>
+            </a>
+            <div class="tooltip">Training Workshop</div>
+        </li>
+                <!-- Performance Management -->
+                <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
+                    <i class="fa fa-bar-chart ml-1 mr-2 text-lg text-amber-500 sidebar-icon"></i>
+                    <span class="text-l sidebar-text">Performance Management</span>
+                </li>
+
+        <li class="tooltip-container">
+            <a href="attendance.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-users text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Attendance Statistics</span>
+            </a>
+            <div class="tooltip">Attendance Statistics</div>
+        </li>
+        <li class="tooltip-container">
+            <a href="evaluation.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-star text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Performance Evaluation</span>
+            </a>
+            <div class="tooltip">Performance Evaluation</div>
+        </li>
+         <!-- Training Management -->
+         <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
+            <i class="fas fa-chalkboard-teacher text-lg ml-1 mr-1 text-amber-500 sidebar-icon"></i>
+            <span class="text-l sidebar-text">Training Management</span>
+        </li>
+
+        <li class="tooltip-container">
+            <a href="schedule.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-calendar-days text-gray-400"></i></span>
+                <span class="text-sm font-medium sidebar-text">Training Schedule</span>
+            </a>
+            <div class="tooltip">Training Schedule</div>
+        </li>
+    </ul>
+  </aside>
+
+  <main id="main-content" class="ml-64  pt-5 w-full transition-all duration-500">
+    <div class="p-4 mt-10 w-full">
+        <div class="flex flex-col md:flex-row items-center justify-between bg-white shadow-md rounded-lg p-4 mb-4">
+            <div class="flex items-center">
+                <div class="text-xl font-bold">Dashboard</div>
+            </div>
+        </div>
+      
+        <div class="grid grid-cols-1 ml-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Total New Hired  -->
+            <div class="bg-white w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-700">Total New Hired</h2>
+                        <div class="flex items-center mt-1">
+                            <span class="text-3xl font-bold">0</span>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-amber-100 rounded-full">
+                        <i class="fas fa-user-plus text-amber-600 text-xl"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600">Trainees</p>
+            </div>
+          
+            <!-- Training -->
+            <div class="bg-white w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-700">Training</h2>
+                        <div class="flex items-center mt-1">
+                            <span class="text-3xl font-bold">0</span>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-blue-100 rounded-full">
+                        <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600">On Going Trainees</p>
+            </div>
+          
+            <!-- Total Employee -->
+            <div class="bg-white w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-700">Total Employees</h2>
+                        <div class="flex items-center mt-1">
+                            <span class="text-3xl font-bold">0</span>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-green-100 rounded-full">
+                        <i class="fas fa-users text-green-600 text-xl"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600">Employee list</p>
+            </div>
+          
+            <!-- Employee Evaluated -->
+            <div class="bg-white w-full rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-700">Employee Evaluated</h2>
+                        <div class="flex items-center mt-1">
+                            <span class="text-3xl font-bold">0</span>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-purple-100 rounded-full">
+                        <i class="fas fa-clipboard-check text-purple-600 text-xl"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600">Completed</p>
+            </div>
+        </div>
+      </div>
+      
+      <div class="ml-5 items-center flex gap-4">
+        <div class="w-[65%] bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-900">Job Statistics</h1>
+            </div>
+            <canvas id="jobChart" class="mt-10 w-full flex-grow"></canvas>
+        </div>
+      
+        <div class="w-[32%] h-[40%] bg-white p-6 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-bold text-gray-900">Attendance Statistics</h1>
+            <!-- Attendance Counts -->
+            <div class='flex justify-around mt-4'>
+                <div class='text-center'>
+                    <h2 class='text-lg font-semibold text-green-600'>Present</h2>
+                    <span id='presentCount' class='text-3xl font-bold text-green-600'>0</span>
+                </div>
+                <div class='text-center'>
+                    <h2 class='text-lg font-semibold text-red-600'>Absent</h2>
+                    <span id='absentCount' class='text-3xl font-bold text-red-600'>0</span>
+                </div>
+                <div class='text-center'>
+                    <h2 class='text-lg font-semibold text-yellow-500'>Late</h2>
+                    <span id='lateCount' class='text-3xl font-bold text-yellow-500'>0</span>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-4">
+                    <canvas id="attendanceChart" class="w-full h-[70%]"></canvas>
+            </div>
+        </div>
+    </div>
+  </main>
+  <script>
+    
+  </script>
 </body>
-</html>
+<script src="script.js"></script>
+<script src="chart.js"></script>
+</html> 

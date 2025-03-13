@@ -108,22 +108,36 @@
         </div>
     </nav>
 
-    <aside id="sidebar" class="w-64 bg-white h-screen fixed top-0 left-0 shadow-lg pt-16 transition-all duration-500">
+    <aside id="sidebar" class="w-64 bg-white h-screen fixed top-0 left-0 shadow-lg pt-16 transition-all duration-500 items-center">
         <div id="sidebar-title"></div>
-      <ul class="flex flex-col space-y-2">
+      <ul class="flex flex-col space-y-4">
         <li class="tooltip-container">
-            <a href="index.html" class="mt-5 ml-5 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-amber-500 hover:text-amber-400">
+            <a href="index.html" class="mt-5 ml-5 rounded-l-lg flex flex-row items-center h-10 transform hover:translate-x-2 transition-transform ease-in duration-200 text-amber-500 hover:text-amber-400">
                 <span class="mr-2 inline-flex items-center justify-center h-13 w-13 text-lg text-gray-400"><box-icon name='dashboard' type='solid' color='orange' ></box-icon></span>
                 <span class="text-2xl font-bold sidebar-text">Dashboard</span>
             </a>
             <div class="tooltip">Dashboard</div>
         </li>
-             <!-- Learning Management -->
-             <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
+            <!-- Learning Management -->
+        <li class="sidebar-item mb-2 font-bold text-amber-500 ml-5 items-center cursor-pointer flex justify-between pr-5" onclick="toggleMenu()">
+            <div class="flex items-center">
                 <i class="fa-solid fa-book-open-reader text-lg ml-1 mr-2 text-amber-500 sidebar-icon"></i>
-                <span class="text-l sidebar-text">Learning & Development</span>
+                <span class="text-l sidebar-text ml-1">Learning and Development</span>
+            </div>
+            <i id="dropdownArrow" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+        </li>
+        <ul id="dropdownMenu" class="hidden bg-amber-200 rounded-md mt-5 space-y-2 pl-6 py-3">
+            <li class="text-gray-700 hover:text-amber-500 flex items-center tooltip-container">
+                <i class="fas fa-user-plus mr-2 text-gray-400 cursor-pointer"></i> 
+                <a href="newhired.html" class="text-gray-700 hover:text-amber-500 sidebar-text">New Hired</a>
+                <div class="tooltip">New Hired</div>
             </li>
-
+            <li class="text-gray-700 hover:text-amber-500 flex items-center tooltip-container">
+                <i class="fas fa-users mr-3 text-gray-400 cursor-pointer"></i> 
+                <a href="regular.html" class="text-gray-700 hover:text-amber-500 sidebar-text">Regular Employees</a>
+                <div class="tooltip">Regular Employees</div>
+            </li>
+        </ul>
 
         <li class="tooltip-container">
             <a href="assessment.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
@@ -133,9 +147,11 @@
             <div class="tooltip">Training Workshop</div>
         </li>
                 <!-- Performance Management -->
-                <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
-                    <i class="fa fa-bar-chart ml-1 mr-2 text-lg text-amber-500 sidebar-icon"></i>
-                    <span class="text-l sidebar-text">Performance Management</span>
+                <li class="sidebar-item mb-2 font-bold text-amber-500 ml-5 items-center flex justify-between pr-5">
+                    <div class="flex items-center">
+                        <i class="fa fa-bar-chart text-lg ml-1 mr-2 text-amber-500 sidebar-icon"></i>
+                        <span class="text-l sidebar-text ml-1">Performance Management</span>
+                    </div>
                 </li>
 
         <li class="tooltip-container">
@@ -146,27 +162,12 @@
             <div class="tooltip">Attendance Statistics</div>
         </li>
         <li class="tooltip-container">
-            <a href="statistics.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-chart-line text-gray-400"></i></span>
-                <span class="text-sm font-medium sidebar-text">Performance Statistics</span>
-            </a>
-            <div class="tooltip">Performance Statistics</div>
-        </li>
-        <li class="tooltip-container">
             <a href="evaluation.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                 <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-star text-gray-400"></i></span>
                 <span class="text-sm font-medium sidebar-text">Performance Evaluation</span>
             </a>
             <div class="tooltip">Performance Evaluation</div>
         </li>
-        <li class="tooltip-container">
-            <a href="status.html" class="ml-3 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-user-check text-gray-400"></i></span>
-                <span class="text-sm font-medium sidebar-text">Employee Trainee Status</span>
-            </a>
-            <div class="tooltip">Employee Trainee Status</div>
-        </li>
-        
          <!-- Training Management -->
          <li class="sidebar-item mb-2 font-bold font-sans text-amber-500 ml-5">
             <i class="fas fa-chalkboard-teacher text-lg ml-1 mr-1 text-amber-500 sidebar-icon"></i>
@@ -174,7 +175,7 @@
         </li>
 
         <li class="tooltip-container">
-            <a href="schedule.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+            <a href="trainee.html" class="ml-2 rounded-l-lg flex flex-row items-center h-10 transform hover:bg-amber-200 hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                 <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="fa-solid fa-calendar-days text-gray-400"></i></span>
                 <span class="text-sm font-medium sidebar-text">Training Schedule</span>
             </a>
@@ -193,20 +194,28 @@
 
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <div class="p-4 border-b border-gray-200">
-                <div class="relative">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                        <i class="fas fa-search text-gray-400"></i>
-                    </span>
-                    <input type="text" id="searchInput" placeholder="Search....." class="w-auto pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                <div class="flex items-center space-x-4">
+                    <!-- Search Input Wrapper -->
+                    <div class="relative flex-grow">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <i class="fas fa-search text-gray-400"></i>
+                        </span>
+                        <input type="text" id="searchInput" placeholder="Search....." class="w-[300px] pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+                
+                    <!-- Evaluate Employee Button -->
+                    <button onclick="openModal()" class="bg-amber-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-400">
+                        Evaluate Employee
+                    </button>
                 </div>
             </div>
             <table class="min-w-full">
                 <thead class="bg-gradient-to-r from-yellow-300 to-amber-400 text-black">
                     <tr>
-                        <th class="p-2">Name</th>
-                            <th class="px-6 py-3 text-left">Department</th>
-                            <th class="px-6 py-3 text-left">Email</th>
-                            <th class="px-6 py-3 text-left">Performance Evaluation</th>
+                            <th class="p-2">ID</th>
+                            <th class="px-6 py-3">Name</th>
+                            <th class="px-6 py-3">Final Score</th>
+                            <th class="px-6 py-3">Status</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -217,7 +226,13 @@
     </div>
   </main>
   <script>
-    
+    function toggleMenu() {
+        const menu = document.getElementById("dropdownMenu");
+        const arrow = document.getElementById("dropdownArrow");
+
+        menu.classList.toggle("hidden");
+        arrow.classList.toggle("rotate-180");
+    }
   </script>
 </body>
 <script src="script.js"></script>
